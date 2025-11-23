@@ -34,7 +34,10 @@ LOG_DIR_PATH = "./logs"
 LOGGER_NAME = "ApplicationLog"
 LOG_FILE = "application.log"
 APP_BOOT_MESSAGE = "アプリが起動されました。"
-
+#追加
+INITIALIZE_ERROR_MESSAGE = "初期化処理中にエラーが発生しました。"
+DISP_ANSWER_ERROR_MESSAGE = "回答の表示処理中にエラーが発生しました。"
+DISP_REGENERATE_ERROR_MESSAGE = "回答の再生成処理中にエラーが発生しました。"
 
 # ==========================================
 # LLM設定系
@@ -50,6 +53,7 @@ RAG_TOP_FOLDER_PATH = "./data"
 SUPPORTED_EXTENSIONS = {
     ".pdf": PyMuPDFLoader,
     ".docx": Docx2txtLoader,
+    # 追加
     ".txt": TextLoader,
     ".csv": lambda path: CSVLoader(path, encoding="utf-8")
 }
