@@ -122,11 +122,21 @@ def initialize_retriever():
     embeddings = OpenAIEmbeddings()
     
     # チャンク分割用のオブジェクトを作成
+    # text_splitter = CharacterTextSplitter(
+    #     chunk_size=500,
+    #     chunk_overlap=50,
+    #     separator="\n"
+    # )
+    # チャンク分割用のオブジェクトを作成
     text_splitter = CharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
+        # 修正: ct.CHUNK_SIZE を使用
+        chunk_size=ct.CHUNK_SIZE,
+        # 修正: ct.CHUNK_OVERLAP を使用
+        chunk_overlap=ct.CHUNK_OVERLAP,
         separator="\n"
     )
+
+
 
     # チャンク分割を実施
     splitted_docs = text_splitter.split_documents(docs_all)
@@ -135,7 +145,11 @@ def initialize_retriever():
     db = Chroma.from_documents(splitted_docs, embedding=embeddings)
 
     # ベクターストアを検索するRetrieverの作成
-    st.session_state.retriever = db.as_retriever(search_kwargs={"k": 3})
+    # st.session_state.retriever = db.as_retriever(search_kwargs={"k": 3})
+    #　5に変更
+    #  st.session_state.retriever = db.as_retriever(search_kwargs={"k": 5})   
+    # 修正: ct.RAG_RETRIEVER_K を使用
+    st.session_state.retriever = db.as_retriever(search_kwargs={"k": ct.RAG_RETRIEVER_K})
 
 
 def initialize_session_state():
