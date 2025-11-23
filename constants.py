@@ -44,6 +44,13 @@ DISP_REGENERATE_ERROR_MESSAGE = "回答の再生成処理中にエラーが発�
 # ==========================================
 MODEL = "gpt-4o-mini"
 TEMPERATURE = 0.5
+#追加
+# ベクターストアから取り出す関連ドキュメントの数
+RAG_RETRIEVER_K = 5 
+# ドキュメントのチャンク分割サイズ
+CHUNK_SIZE = 500
+# ドキュメントのチャンク重複サイズ
+CHUNK_OVERLAP = 50
 
 
 # ==========================================
@@ -54,22 +61,16 @@ SUPPORTED_EXTENSIONS = {
     ".pdf": PyMuPDFLoader,
     ".docx": Docx2txtLoader,
     # 追加
-    ".txt": TextLoader,
+    ".txt": lambda path: TextLoader(path, encoding="utf-8")
     ".csv": lambda path: CSVLoader(path, encoding="utf-8")
 }
+CSV_INTEGRATION_TARGETS = [
+    "社員名簿.csv"
+]
 WEB_URL_LOAD_TARGETS = [
     "https://generative-ai.web-camp.io/"
 ]
 
-# ==========================================
-# RAG設定系 (← 新規追加)
-# ==========================================
-# ベクターストアから取り出す関連ドキュメントの数
-RAG_RETRIEVER_K = 5 
-# ドキュメントのチャンク分割サイズ
-CHUNK_SIZE = 500
-# ドキュメントのチャンク重複サイズ
-CHUNK_OVERLAP = 50
 
 
 # ==========================================

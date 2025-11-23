@@ -60,20 +60,20 @@ if not "initialized" in st.session_state:
 cn.display_app_title()
 
 # モード表示
-cn.display_select_mode()
+cn.display_sidebar()
 
 # AIメッセージの初期表示
 # cn.display_initial_ai_message()
 
 # ★ 4-3. サイドバーの機能説明の表示を新規追加
-cn.display_sidebar_explanation() 
+cn.display_initial_ai_message()
 
-# 4-4. 初期AIメッセージの表示
-if not st.session_state.messages:
-    cn.display_initial_ai_message()
+# # 4-4. 初期AIメッセージの表示
+# if not st.session_state.messages:
+#     cn.display_initial_ai_message()
 
-# 4-5. 会話ログの表示
-cn.display_messages()
+# # 4-5. 会話ログの表示
+# cn.display_messages()
 
 
 ############################################################
