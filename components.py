@@ -44,6 +44,14 @@ def display_initial_ai_message():
         # 「st.success()」とすると緑枠で表示される
         st.markdown("こんにちは。私は社内文書の情報をもとに回答する生成AIチャットボットです。上記で利用目的を選択し、画面下部のチャット欄からメッセージを送信してください。")
 
+        # 警告メッセージを追加
+        # 「st.warning()」を使うと黄色枠で表示される
+        st.warning("具体的に入力したほうが期待通りの回答を得やすいです。", icon=ct.WARNING_ICON)
+
+def display_sidebar_explanation():
+    """
+    サイドバーに各モードの機能説明を表示
+    """
         # 「社内文書検索」の機能説明
         st.markdown("**【「社内文書検索」を選択した場合】**")
         # 「st.info()」を使うと青枠で表示される

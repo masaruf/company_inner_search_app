@@ -63,7 +63,17 @@ cn.display_app_title()
 cn.display_select_mode()
 
 # AIメッセージの初期表示
-cn.display_initial_ai_message()
+# cn.display_initial_ai_message()
+
+# ★ 4-3. サイドバーの機能説明の表示を新規追加
+cn.display_sidebar_explanation() 
+
+# 4-4. 初期AIメッセージの表示
+if not st.session_state.messages:
+    cn.display_initial_ai_message()
+
+# 4-5. 会話ログの表示
+cn.display_messages()
 
 
 ############################################################
