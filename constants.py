@@ -60,9 +60,8 @@ RAG_TOP_FOLDER_PATH = "./data"
 SUPPORTED_EXTENSIONS = {
     ".pdf": PyMuPDFLoader,
     ".docx": Docx2txtLoader,
-    # 追加
+    ".csv": lambda path: CSVLoader(path, encoding="utf-8"),
     ".txt": lambda path: TextLoader(path, encoding="utf-8")
-    ".csv": lambda path: CSVLoader(path, encoding="utf-8")
 }
 CSV_INTEGRATION_TARGETS = [
     "社員名簿.csv"
